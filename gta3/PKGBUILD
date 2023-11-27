@@ -1,0 +1,30 @@
+pkgname=re3-git-ugjka
+pkgver=310dd863
+pkgrel=1
+pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
+arch=('x86_64' 'aarch64')
+url="https://github.com/halpz/re3"
+license=('custom:none')
+depends=('openal' 'glfw' 'mpg123' 'librw-git')
+makedepends=('cmake')
+source=(
+    "git+https://github.com/halpz/re3.git"
+)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd re3
+  git describe --always --tags|sed 's/.*_//;s/-\(.*\)-g/+r\1./'
+}
+
+build() {
+  cd re3
+  cmake -DRE3_VENDORED_LIBRW= .
+  make
+}
+
+package() {
+  cd re3
+  install src/re3 -Dt "$pkgdir/usr/share/re3"
+  cp -r gamefiles/* "$pkgdir/usr/share/re3"
+}
