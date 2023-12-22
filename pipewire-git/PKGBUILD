@@ -15,7 +15,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=1.0.0.132.g03173530d
+pkgver=ugjka
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -70,10 +70,10 @@ source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
 sha256sums=('SKIP')
 options=('debug')
 
-pkgver() {
-  cd pipewire
-  echo "$(git describe --long --tags | tr - .)"
-}
+#pkgver() {
+#  cd pipewire
+#  echo "$(git describe --long --tags | tr - .)"
+#}
 
 prepare() {
   mkdir -p build
@@ -161,7 +161,6 @@ package_pipewire-git() {
     'usr/share/pipewire/pipewire.conf'
     'usr/share/pipewire/minimal.conf'
   )
-  install=pipewire-git.install
 
   DESTDIR="${pkgdir}" meson install -C build
 
@@ -624,7 +623,6 @@ package_pipewire-pulse-git() {
     'pulseaudio-bluetooth'
     'alsa-card-profiles'
   )
-  install=pipewire-pulse.install
 
   mv pulse/* "${pkgdir}"
 
