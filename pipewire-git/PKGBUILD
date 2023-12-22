@@ -16,7 +16,7 @@ pkgname=(
   'pipewire-zeroconf-git'
 )
 pkgver=1.0.0.132.g03173530d
-pkgrel=100
+pkgrel=101
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
 url='https://pipewire.org'
@@ -130,7 +130,7 @@ package_pipewire-git() {
     "pipewire-audio-git=${pkgver}"
     "pipewire-ffado-git=${pkgver}"
     "pipewire-docs-git=${pkgver}"
-    "pipewire-jack-git=${pkgver}"
+    #"pipewire-jack-git=${pkgver}"
     "pipewire-jack-client-git=${pkgver}"
     "pipewire-pulse-git=${pkgver}"
     "pipewire-roc-git=${pkgver}"
