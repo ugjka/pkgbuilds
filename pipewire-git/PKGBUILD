@@ -7,7 +7,7 @@ pkgname=(
   'pipewire-docs-git'
   'pipewire-audio-git'
   'pipewire-alsa-git'
-#  'pipewire-jack-client-git'
+  'pipewire-jack-client-git'
   'pipewire-ffado-git'
   'pipewire-pulse-git'
   'pipewire-roc-git'
@@ -126,6 +126,17 @@ package_pipewire-git() {
 
   depends=(
     "libpipewire-git=${pkgver}" "libpipewire-${_api_ver}.so"
+    "pipewire-alsa-git=${pkgver}"
+    "pipewire-audio-git=${pkgver}"
+    "pipewire-ffado-git=${pkgver}"
+    "pipewire-docs-git=${pkgver}"
+    "pipewire-jack-git=${pkgver}"
+    "pipewire-jack-client-git=${pkgver}"
+    "pipewire-pulse-git=${pkgver}"
+    "pipewire-roc-git=${pkgver}"
+    "pipewire-v4l2-git=${pkgver}"
+    "pipewire-x11-bell-git=${pkgver}"
+    "pipewire-zeroconf-git=${pkgver}"
     'gcc-libs' #libgcc_s.so libstdc++.so
     'glibc' # libc.so
     'libcamera' 'libcamera-base.so' 'libcamera.so'
@@ -137,18 +148,6 @@ package_pipewire-git() {
     'libdrm'
   )
   optdepends=(
-    'pipewire-alsa-git: ALSA support'
-    'pipewire-audio-git: Audio support'
-    'pipewire-ffado-git: FireWire support'
-    'pipewire-docs-git: Documentation'
-    'pipewire-jack-git: JACK support'
-    'pipewire-jack-client-git: PipeWire as JACK client'
-    'pipewire-pulse-git: PulseAudio support'
-    'pipewire-roc-git: ROC support'
-    'pipewire-session-manager: Session manager'
-    'pipewire-v4l2-git: V4L2 interceptor'
-    'pipewire-x11-bell-git: X11 bell'
-    'pipewire-zeroconf-git: Zeroconf support'
     'gst-plugin-pipewire-git: gstreamer support'
     'rtkit: realtime privileges with rtkit module'
   )
