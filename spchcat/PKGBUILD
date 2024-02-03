@@ -1,0 +1,32 @@
+# Maintainer: ugjka@proton.me
+
+pkgbase=spchcat
+pkgname=${pkgbase}-bin
+pkgver=0.0.2
+pkgrel=1
+pkgdesc="Speech recognition tool to convert audio to text transcripts"
+arch=('x86_64')
+url="https://github.com/petewarden/spchcat"
+license=('Mozilla Public License Version 2.0')
+depends=('libpulse.so')
+provides=('spchcat')
+conflicts=('spchcat')
+source_x86_64=("https://github.com/petewarden/${pkgbase}/releases/download/v${pkgver}-alpha/${pkgbase}_${pkgver%.*}-${pkgver##*.}_amd64.deb")
+sha256sums_x86_64=('a9c9fdd71d57d00053038e808a4b9f7d83ed303a7065ef2dcb9e1862516cc736')
+
+prepare(){
+    mkdir "${srcdir}/${pkgver}"
+    bsdtar -O -xf *.deb data.tar.xz | bsdtar -C "${srcdir}/${pkgver}" -xJf -
+}
+
+package() {
+    cd "${srcdir}/${pkgver}"
+    mkdir -p "${pkgdir}/opt/${pkgbase}"
+    cp -r "usr/local/bin" "${pkgdir}/opt/${pkgbase}"
+    cp -r "usr/lib/." "${pkgdir}/opt/${pkgbase}/bin"
+    cp -r "etc" "${pkgdir}/opt/${pkgbase}"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgbase}/bin/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
+    mkdir "${pkgdir}/etc"
+    ln -s "/opt/${pkgbase}/etc/${pkgbase}" "${pkgdir}/etc/"
+}
