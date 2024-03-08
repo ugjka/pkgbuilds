@@ -1,6 +1,6 @@
 pkgname=revc-git-ugjka
 pkgver=a16fcd8d
-pkgrel=1
+pkgrel=2
 pkgdesc="Grand Theft Auto: Vice City reverse engineered"
 arch=('x86_64' 'aarch64')
 url="https://github.com/halpz/re3/tree/miami"
