@@ -1,6 +1,6 @@
 pkgname=revc-git-ugjka
-pkgver=a16fcd8d
-pkgrel=2
+pkgver=37e9ec0d
+pkgrel=1
 pkgdesc="Grand Theft Auto: Vice City reverse engineered"
 arch=('x86_64' 'aarch64')
 url="https://github.com/halpz/re3/tree/miami"
@@ -16,7 +16,7 @@ pkgver(){
 }
 build(){
     cd re3
-    cmake -DREVC_VENDORED_LIBRW= .
+    cmake -DREVC_VENDORED_LIBRW=OFF -DGLFW_USE_WAYLAND=ON .
     make
 }
 package(){
